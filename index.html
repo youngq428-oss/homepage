@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLP - 컨테이너 로딩 플래너</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="app-header">
+  <h1>CLP <span>컨테이너 로딩 플래너</span></h1>
+</header>
+
+<main class="app-layout">
+  <section class="panel panel-input">
+    <div class="field-group">
+      <label for="container-preset">컨테이너 규격</label>
+      <select id="container-preset"></select>
+      <div id="container-spec" class="spec-text"></div>
+    </div>
+
+    <div class="field-group">
+      <label>화물 목록</label>
+      <div class="table-wrap">
+        <table id="cargo-table">
+          <thead>
+            <tr>
+              <th>품명</th>
+              <th>길이(cm)</th>
+              <th>너비(cm)</th>
+              <th>높이(cm)</th>
+              <th>무게(kg)</th>
+              <th>수량</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="cargo-tbody"></tbody>
+        </table>
+      </div>
+      <button id="add-row-btn" type="button" class="btn btn-secondary">+ 행 추가</button>
+    </div>
+
+    <button id="calc-btn" type="button" class="btn btn-primary">적재 계산</button>
+
+    <div class="field-group stats-panel" id="stats-panel" hidden>
+      <label>계산 결과</label>
+      <ul class="stats-list">
+        <li>부피 적재율 <strong id="stat-volume">-</strong></li>
+        <li>중량 적재율 <strong id="stat-weight">-</strong></li>
+        <li>적재 박스 수 <strong id="stat-count">-</strong></li>
+      </ul>
+      <div id="unpacked-wrap" hidden>
+        <label>미적재 목록</label>
+        <ul id="unpacked-list" class="unpacked-list"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel panel-viewport">
+    <div id="viewport"></div>
+  </section>
+</main>
+
+<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="js/clp.js"></script>
+</body>
+</html>
